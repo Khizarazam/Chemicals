@@ -9,27 +9,31 @@ import gsap from "gsap";
 
 const App = () => {
   const scrollRef = useRef(null);
+  const scrollInstance = useRef(null);
 
   useEffect(() => {
-    const scroll = new LocomotiveScroll({
-      el: scrollRef.current,
-      smooth: true,
-      multiplier: 2,
-      smartphone: {
+    if (!scrollInstance.current) {
+      scrollInstance.current = new LocomotiveScroll({
+        el: scrollRef.current,
         smooth: true,
-        multiplier: 10,
-      },
-      tablet: {
-        smooth: true,
-        multiplier: 10,
-      },
-    });
+        useNativeScroll: true,
+        multiplier: 3,
+        smartphone: {
+          smooth: true,
+          multiplier: 10,
+        },
+        tablet: {
+          smooth: true,
+          multiplier: 10,
+        },
+      });
+    }
 
     const handleRouteChange = () => {
-      scroll.update();
+      if (scrollInstance.current) {
+        scrollInstance.current.update();
+      }
     };
-
-    window.addEventListener("popstate", handleRouteChange);
 
     const handleMouseMove = (e) => {
       gsap.to("#cursor", {
@@ -40,12 +44,33 @@ const App = () => {
       });
     };
 
+    window.addEventListener("popstate", handleRouteChange);
     window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      scroll.destroy();
+      if (scrollInstance.current) {
+        scrollInstance.current.destroy();
+      }
       window.removeEventListener("popstate", handleRouteChange);
       window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (scrollInstance.current) {
+        scrollInstance.current.update();
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    if (scrollInstance.current) {
+      scrollInstance.current.update();
+    }
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -53,11 +78,11 @@ const App = () => {
     <>
       <div
         id="cursor"
-        className="w-4 h-4 hidden lg:block rounded-full bg-white fixed z-[999]"
+        className="w-4 h-4 hidden lg:block rounded-full bg-[#aab7b7] fixed z-[99]"
       ></div>
       <div
         data-scroll-section
-        className="fixed text-white top-0 left-0 right-0 z-[100]"
+        className="fixed text-[#aab7b7] bg-black/25 top-0 left-0 right-0 z-[100]"
       >
         <Navbar />
       </div>
@@ -65,7 +90,7 @@ const App = () => {
         data-scroll-container
         data-scroll-speed="1"
         ref={scrollRef}
-        className="text-white selection:bg-blue-400 bg-zinc-800"
+        className="text-[#aab7b7] selection:bg-zinc-800 bg-[linear-gradient(to_left,_#1a2d42_50%,_#aab7b7_250%)]"
       >
         <div data-scroll-section data-scroll-speed="2">
           <Outlet />

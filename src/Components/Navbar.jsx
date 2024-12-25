@@ -200,11 +200,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-opacity-30 bg-white">
+    <nav className="">
       <div className="max-w-7xl mx-auto px-10">
         <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0">
-            <img src={pcLogo} alt="Logo" className="h-12 w-auto" />
+          <div className="flex-shrink-0 text-3xl font-bold">
+            <h1>Prime-Chemicals</h1>
           </div>
 
           <div className="hidden lg:flex text-lg lg:items-center lg:space-x-4">
@@ -216,20 +216,20 @@ const Navbar = () => {
                 onMouseLeave={() => handleMouseLeave(link.toLowerCase())}
               >
                 {isDropdownHeader(link) ? (
-                  <span className="px-3 py-2 hover:text-blue-600 cursor-pointer">
+                  <span className="px-3 py-2 hover:text-white cursor-pointer">
                     {link}
                   </span>
                 ) : (
                   <Link
                     to={`/${formatPath(link)}`}
-                    className="px-3 py-2 hover:text-blue-800"
+                    className="px-3 py-2 hover:text-white"
                   >
                     {link}
                   </Link>
                 )}
 
                 {getDropdownContent(link) && (
-                  <div className="absolute left-0 w-48 bg-zinc-700 rounded-md shadow-lg z-50">
+                  <div className="absolute left-0 w-48 bg-[#1a2d42] rounded-md shadow-lg z-50">
                     {getDropdownContent(link).map((item, idx) => (
                       <div key={idx} className="relative group/submenu">
                         <Link
@@ -238,19 +238,19 @@ const Navbar = () => {
                           rel={
                             item.external ? "noopener noreferrer" : undefined
                           }
-                          className="block px-4 py-2 text-sm hover:bg-zinc-300/10"
+                          className="block px-4 py-2 text-sm hover:bg-zinc-300/10 hover:text-white"
                         >
                           {item.name}
                         </Link>
                         {item.hasSubmenu &&
                           electroplatingOptions[item.name] && (
-                            <div className="absolute left-full top-0 w-48 bg-zinc-700 rounded-md shadow-lg hidden group-hover/submenu:block max-h-[500px] overflow-y-auto">
+                            <div className="absolute left-full top-0 w-48 bg-[#1a2d42] rounded-md shadow-lg hidden group-hover/submenu:block max-h-[500px] overflow-y-auto">
                               {electroplatingOptions[item.name].map(
                                 (subItem, subIdx) => (
                                   <Link
                                     key={subIdx}
                                     to={subItem.link}
-                                    className="block px-4 py-2 text-sm hover:bg-zinc-300/10"
+                                    className="block px-4 py-2 text-sm hover:bg-zinc-300/10 hover:text-white"
                                   >
                                     {subItem.name}
                                   </Link>
@@ -287,7 +287,7 @@ const Navbar = () => {
 
         {isMobileMenuOpen && (
           <div className="lg:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-zinc-700 shadow-lg rounded-b-lg">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#1a2d42] shadow-lg rounded-b-lg">
               {Tags.map((link, index) => (
                 <div key={index} className="relative">
                   {isDropdownHeader(link) ? (

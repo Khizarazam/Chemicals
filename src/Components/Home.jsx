@@ -90,11 +90,11 @@ const Home = () => {
 
   return (
     <>
-      <div className="w-full min-h-screen mt-20 flex flex-col md:flex-row justify-end md:justify-center items-center">
+      <div className="w-full min-h-screen flex flex-col md:flex-row justify-end md:justify-center items-center">
         <div className="w-full flex flex-col justify-center items-center min-h-[40vh] md:min-h-[70vh]">
           <div className="w-[60%] text-center">
             <h1 className="text-3xl md:mt-0 sm:text-4xl md:text-5xl font-medium">
-              Prime Chemical
+              Prime Chemicals
             </h1>
             <h3 className="text-xl sm:text-xl md:text-2xl font-lighter">
               A Sign Of Quality
@@ -225,10 +225,10 @@ const Home = () => {
           </div>
         </div>
         <div className="md:w-[50%] mt-4 md:mt-0 rounded-xl w-full p-4 h-[600px] flex flex-col justify-center items-center">
-          <h1 className="px-2 w-[180px] py-3 text-center my-3 hover:scale-105  transition-all shadow-lg bg-opacity-50 hover:bg-green-500 bg-green-500 rounded-full">
+          <h1 className="px-2 w-[180px] py-3 text-center text-xl my-3 hover:scale-105 text-[#aab7b7] bg-[#2e4156] duration-300  transition-all shadow-lg rounded-full">
             We Are Certified
           </h1>
-          <div className="w-full h-[500px] relative rounded-xl bg-zinc-700">
+          <div className="w-full h-[500px] relative rounded-xl bg-[#2e4156]">
             <img
               src={img1}
               alt="Image"

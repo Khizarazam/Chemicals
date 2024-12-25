@@ -5,7 +5,7 @@ import shazerimg from "../assets/shazer-awan.jpg";
 const We_Are = () => {
   return (
     <>
-      <div className="w-full mt-28">
+      <div className="w-full pt-20">
         <div className="w-full py-3 flex justify-start pl-8 items-center">
           <h1 className="text-4xl text-white">We Are</h1>
         </div>
@@ -62,7 +62,7 @@ const We_Are = () => {
             alt="Basharat Javed Awan"
             className="w-full md:w-[30%] rounded-lg shadow-xl h-[250px] md:h-[350px] object-cover"
           />
-          <div className="w-full md:w-[70%] bg-zinc-700 rounded-lg p-4">
+          <div className="w-full md:w-[70%] bg-[linear-gradient(to_bottom,_#1a2d42_50%,_#aab7b7_250%)] rounded-lg p-4">
             <h1 className="text-xl md:text-2xl font-bold text-blue-400">
               Basharat Javed Awan <br /> CEO & Founder
             </h1>
@@ -84,7 +84,7 @@ const We_Are = () => {
         </div>
 
         <div className="flex mt-5 flex-col md:flex-row gap-6">
-          <div className="w-full md:w-[70%] bg-zinc-700 rounded-lg p-4 order-2 md:order-1">
+          <div className="w-full md:w-[70%] bg-[linear-gradient(to_bottom,_#1a2d42_50%,_#aab7b7_250%)] rounded-lg p-4 order-2 md:order-1">
             <h1 className="text-xl md:text-2xl font-bold text-blue-400">
               Shazer Javed Awan <br /> Director Production
             </h1>
