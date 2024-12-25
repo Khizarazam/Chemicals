@@ -30,7 +30,7 @@ const Contact = () => {
         <div className="md:w-[40%] h-[150px] w-full md:h-full flex justify-center md:pt-32 p-5 items-center">
           <h1 className="md:text-7xl text-5xl">Get In Touch</h1>
         </div>
-        <div className=" w-full py-12 md:h-full md:w-[60%]">
+        <div className=" w-full py-12 px-3 md:h-full md:w-[60%]">
           <div className="md:w-[90%] py-5 w-full flex flex-col items-center justify-center h-[80%] rounded-xl bg-[linear-gradient(to_right,_#1a2d42_50%,_#aab7b7_250%)]">
             <form ref={form} onSubmit={sendEmail} className="">
               <div className="w-full my-3 flex-col flex justify-center items-center">
@@ -73,7 +73,7 @@ const Contact = () => {
                 <button
                   onClick={notify}
                   type="submit"
-                  className=" mt-5 text-white px-8 hover:border-[1px] py-2 hover:scale-105 transition-all duration-300 hover:bg-[linear-gradient(to_top,_#1a2d48_50%,_#aab7b7_250%)] rounded-full"
+                  className=" my-3 text-white px-8 hover:border-[1px] py-2 hover:scale-105 transition-all duration-300 hover:bg-[linear-gradient(to_top,_#1a2d48_50%,_#aab7b7_250%)] rounded-full"
                 >
                   Submit
                 </button>

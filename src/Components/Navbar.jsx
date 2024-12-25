@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import pcLogo from "../assets/pc-logo.png";
+// import pcLogo from "../assets/pc-logo.png";
 import { TiThMenu } from "react-icons/ti";
 import { RiCloseLine } from "react-icons/ri";
 import { MdOutlineArrowRight } from "react-icons/md";
 import { IoMdArrowDropdown } from "react-icons/io";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState({
@@ -146,7 +148,7 @@ const Navbar = () => {
   const equipmentOptions = [
     { name: "Electroplating Plants", link: "/electroplating-plants" },
     { name: "ElectroPLating Equipments", link: "/electroplating-equipments" },
-    { name: "PP and PVC items" , link: "/pp-pvc"}
+    { name: "PP and PVC items", link: "/pp-pvc" },
   ];
 
   const handleMouseEnter = (menu) => {
@@ -199,12 +201,29 @@ const Navbar = () => {
     return link === "Products" || link === "Equipment";
   };
 
+  const tl = gsap.timeline();
+  
+  useGSAP(() => {
+    tl.from("#logo", {
+      opacity: 0,
+      duration: 2,
+      delay: 1,
+    })
+    .from("#navlinks", {
+      opacity: 0,
+      duration: 2,
+      stagger: 0.5,
+    })
+    
+
+  }, []);
+
   return (
     <nav className="">
       <div className="max-w-7xl mx-auto px-10">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 text-3xl font-bold">
-            <h1>Prime-Chemicals</h1>
+            <h1 id="logo">Prime-Chemicals</h1>
           </div>
 
           <div className="hidden lg:flex text-lg lg:items-center lg:space-x-4">
@@ -216,11 +235,12 @@ const Navbar = () => {
                 onMouseLeave={() => handleMouseLeave(link.toLowerCase())}
               >
                 {isDropdownHeader(link) ? (
-                  <span className="px-3 py-2 hover:text-white cursor-pointer">
+                  <span id="navlinks" className="px-3 py-2 hover:text-white cursor-pointer">
                     {link}
                   </span>
                 ) : (
                   <Link
+                    id="navlinks"
                     to={`/${formatPath(link)}`}
                     className="px-3 py-2 hover:text-white"
                   >
@@ -229,7 +249,7 @@ const Navbar = () => {
                 )}
 
                 {getDropdownContent(link) && (
-                  <div className="absolute left-0 w-48 bg-[#1a2d42] rounded-md shadow-lg z-50">
+                  <div className="absolute left-0 w-48 bg-[#1a2d42] rounded-lg shadow-lg z-50">
                     {getDropdownContent(link).map((item, idx) => (
                       <div key={idx} className="relative group/submenu">
                         <Link
@@ -287,7 +307,7 @@ const Navbar = () => {
 
         {isMobileMenuOpen && (
           <div className="lg:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#1a2d42] shadow-lg rounded-b-lg">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#1a2d42] shadow-lg mb-5 rounded-lg">
               {Tags.map((link, index) => (
                 <div key={index} className="relative">
                   {isDropdownHeader(link) ? (
